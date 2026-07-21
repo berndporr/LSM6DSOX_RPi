@@ -1,13 +1,19 @@
 # LSM6DSOX for Raspberry Pi 5
-C++ implementation of real-time reading from a LSM6DSOX IMU.
+Event driven C++ implementation of real-time data from an LSM6DSOX IMU.
+
+The photo shows it mounted underneath the Zetabot between its wheels:
+![alt tag](onzetabot.jpg)
 
 ## Requirements
 
 Raspberry Pi 5 with Debian Trixie OS, gpiod library version 2
 
-`sudo apt-get install libgpiod cmake libgtest-dev libi2c-dev`
+```
+sudo apt-get install libgpiod cmake libgtest-dev libi2c-dev
+```
 
 ## Connect Pi 5 to LSM6DSOX
+
 * GPIO17 (physical pin 11 on Pi) ->I1 (data ready pin 1)
 * 3V (physical pin 1 on Pi) -> VDD
 * GND -> GND
@@ -15,20 +21,33 @@ Raspberry Pi 5 with Debian Trixie OS, gpiod library version 2
 * SCL (physical pin 5) -> SCL
 
 ## Compile
-`cmake .`
+```
+cmake .
+make
+```
 
-`make`
+The install the library type:
 
-`sudo make install` : install library
+```
+sudo make install
+```
 
 ## Test
-`ctest` : run unit tests. Also tests if the gyro reports data.
+
+Run the unit tests with. It also reads read data from the chip so make sure it's
+connected and I2C is enabled:
+
+```
+ctest
+```
 
 ## Example
 
 Go to `demo`. There is `sample_printer` which prints the acceleration and gyro data on the screen till you press enter.
 
-## Find the I2C address 
+## Troubleshooting
+
+Check if you see the I2C device address.
 
 Install the i2c tools:
 ```
@@ -39,7 +58,7 @@ Detect it:
 ```
 i2cdetect -y 1
 ```
-You should see a `6a`:
+You should see the address `6a`:
 
 ```
 i2cdetect -y 1
@@ -53,3 +72,8 @@ i2cdetect -y 1
 60: -- -- -- -- -- -- -- -- -- -- 6a -- -- -- -- -- 
 70: -- -- -- -- -- -- -- --                         
 ```
+
+## Credit
+
+ - Giulia Lafratta
+ - Bernd Porr
