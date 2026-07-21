@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 3.10.0)
+cmake_minimum_required(VERSION 3.20.0)
+
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -26,6 +30,8 @@ install(TARGETS LSM6DSOX_Rpi EXPORT LSM6DSOX_Rpi-targets
 message("library and archive destination " ${CMAKE_INSTALL_LIBDIR})
 
 message("public header destination " ${CMAKE_INSTALL_INCLUDEDIR})
-#add_subdirectory(test)
 
-set(CMAKE_BUILD_TYPE Debug)
+add_subdirectory(test)
+add_subdirectory(demo)
+
+enable_testing()

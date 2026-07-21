@@ -1,5 +1,11 @@
 #include "LSM6DSOX.h"
 
+#ifdef NDEBUG
+constexpr bool DEBUG = false;
+#else
+constexpr bool DEBUG = true;
+#endif
+
 void LSM6DSOX::start(){
     //setup to detect rising edge on the data ready pin
     chipDRDY=gpiod_chip_open(DRDY_CHIP); //open chip with the gpio pins

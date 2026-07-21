@@ -5,7 +5,7 @@ C++ implementation of real-time reading from a LSM6DSOX IMU.
 
 Raspberry Pi 5 with Debian Trixie OS, gpiod library version 2
 
-`sudo apt-get install libgpiod cmake libgtest-dev`
+`sudo apt-get install libgpiod cmake libgtest-dev libi2c-dev`
 
 ## Connect Pi 5 to LSM6DSOX
 * GPIO17 (physical pin 11 on Pi) ->I1 (data ready pin 1)
@@ -21,20 +21,35 @@ Raspberry Pi 5 with Debian Trixie OS, gpiod library version 2
 
 `sudo make install` : install library
 
-optional, compile tests and demo: 
+## Test
+`ctest` : run unit tests. Also tests if the gyro reports data.
 
-`cd test`
+## Example
 
-`cmake .`
+Go to `demo`. There is `sample_printer` which prints the acceleration and gyro data on the screen till you press enter.
 
-`make `
+## Find the I2C address 
 
-## Run
-`ctest` : run unit tests
+Install the i2c tools:
+```
+sudo apt install i2c-tools
+```
 
-`./test/main` : runs simple example program printing values on screen
+Detect it:
+```
+i2cdetect -y 1
+```
+You should see a `6a`:
 
-<!-- ### Find device address
-`sudo apt install i2c-tools`
-`i2cdetect -y 1`
-Address will be `0x+output` -->
+```
+i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- 6a -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+```

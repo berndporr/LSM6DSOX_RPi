@@ -14,7 +14,6 @@
 
 const unsigned int LMS6DSOX_DRDY_GPIO=17; // RPi physical pin 15, connected to data ready pin on LSM
 const char * DRDY_CHIP="/dev/gpiochip0";
-extern const bool DEBUG;
 
 class LSM6DSOX{
     public:     

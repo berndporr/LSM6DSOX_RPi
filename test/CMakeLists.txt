@@ -7,7 +7,7 @@ find_package(GTest CONFIG REQUIRED)
 include(CTest)
 include(FetchContent)
 
-include_directories(${GTEST_INCLUDE_DIRS})  # Var managed by CMake
+include_directories(${GTEST_INCLUDE_DIRS} ..)  # Var managed by CMake
 include(GoogleTest)
 message(STATUS "GTest include dirs: ${GTEST_INCLUDE_DIRS}")
 
@@ -17,9 +17,6 @@ link_directories(/usr/local/lib)
 link_directories(/usr/local/include)
 target_link_libraries(unit_test LSM6DSOX_Rpi i2c)
 target_link_libraries(unit_test gtest gtest_main)
-
-add_executable(main main.cpp)
-target_link_libraries(main LSM6DSOX_Rpi i2c)
 
 gtest_discover_tests(unit_test)
 
