@@ -1,5 +1,6 @@
 #ifndef LSM6DSOX_SAMPLE
 #define LSM6DSOX_SAMPLE
+#include <cstdint>
 #include <stdlib.h>
 
 struct RawData{
