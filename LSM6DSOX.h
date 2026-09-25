@@ -64,7 +64,6 @@ class LSM6DSOX
     XLSettings xlSettings{};
     friend class LSM6DSOXTest; // for unit testing
     uint8_t running = false;
-    LSM6DSOXSample sample;
     LSM6DSOXCallback callback;
     float xlRes; // accelerometer resolution
     float gRes;  // gyroscope resolution

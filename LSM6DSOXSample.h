@@ -41,6 +41,8 @@ struct LSM6DSOXSample{
 
     float temperature=0;
 
+    bool valid = true;
+
 };
 
 struct XLSettings{

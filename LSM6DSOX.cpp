@@ -107,17 +107,22 @@ void LSM6DSOX::stop ()
 
 void LSM6DSOX::getData ()
 {
-    RawData ad = readAccelerometer ();
-    RawData gd = readGyroscope ();
-    sample.ax = ad.x * xlRes;
-    sample.ay = ad.y * xlRes;
-    sample.az = ad.z * xlRes;
-    sample.gx = gd.x * gRes;
-    sample.gy = gd.y * gRes;
-    sample.gz = gd.z * gRes;
-    if (callback)
-    {
-        callback (sample);
+    LSM6DSOXSample sample;
+    try {
+      RawData ad = readAccelerometer ();
+      RawData gd = readGyroscope ();
+      sample.ax = ad.x * xlRes;
+      sample.ay = ad.y * xlRes;
+      sample.az = ad.z * xlRes;
+      sample.gx = gd.x * gRes;
+      sample.gy = gd.y * gRes;
+      sample.gz = gd.z * gRes;
+      if (callback)
+	{
+	  callback (sample);
+	}
+    } catch (const char* msg) {
+      fprintf(stderr,"LSM6DSOX read error: %s\n",msg);
     }
 }
 
@@ -125,18 +130,11 @@ RawData LSM6DSOX::readGyroscope ()
 {
     RawData gd;
     uint8_t tmp[32]; //test if data is 8 bit
-    try
-    {
-        contiguousReadBytes (LSM6DSOX_OUTX_L_G, tmp,
-                             6);       //read 6 bytes from outx_l_g
-        gd.x = (tmp[1] << 8) | tmp[0]; //??
-        gd.y = (tmp[3] << 8) | tmp[2]; //??
-        gd.z = (tmp[5] << 8) | tmp[4]; //??
-    }
-    catch (int fError)
-    {
-        gd.x = gd.y = gd.z = 9999;
-    }
+    contiguousReadBytes (LSM6DSOX_OUTX_L_G, tmp,
+			 6);       //read 6 bytes from outx_l_g
+    gd.x = (tmp[1] << 8) | tmp[0]; //??
+    gd.y = (tmp[3] << 8) | tmp[2]; //??
+    gd.z = (tmp[5] << 8) | tmp[4]; //??
     return gd;
 }
 
@@ -144,19 +142,11 @@ RawData LSM6DSOX::readAccelerometer ()
 {
     RawData ad;
     uint8_t tmp[32]; //test if data is 8 bit
-    try
-    {
-        contiguousReadBytes (LSM6DSOX_OUTX_L_XL, tmp,
+    contiguousReadBytes (LSM6DSOX_OUTX_L_XL, tmp,
                              6);       //read 6 bytes from outx_l_g
-        ad.x = (tmp[1] << 8) | tmp[0]; //??
-        ad.y = (tmp[3] << 8) | tmp[2]; //??
-        ad.z = (tmp[5] << 8) | tmp[4]; //??
-    }
-    catch (int fError)
-    {
-        ad.x = ad.y = ad.z = 999;
-        throw "Error reading accelerometer out register";
-    }
+    ad.x = (tmp[1] << 8) | tmp[0]; //??
+    ad.y = (tmp[3] << 8) | tmp[2]; //??
+    ad.z = (tmp[5] << 8) | tmp[4]; //??
     return ad;
 }
 
