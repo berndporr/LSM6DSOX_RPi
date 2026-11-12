@@ -45,7 +45,7 @@ struct LSM6DSOXSample{
 
 };
 
-struct XLSettings{
+struct LSMSettings{
     /**
     * @brief Linear acceleration sensitivity
     */
@@ -59,30 +59,26 @@ struct XLSettings{
     /**
     * @brief Linear acceleration output data rate
     */
-    enum XL_ODR:uint8_t{       //LOW-POWER MODE       HIGH-PERFORMANCE MODE (set via XL_HM_MODE)
-        XL_ODR_1_6=0x0B, //1.6 Hz                     12.5 Hz
-        XL_ODR_12_5=0x01, //12.5                   the rest of the sampling rates are the same
-        XL_ODR_26=0x02, //26 Hz
-        XL_ODR_52=0x03, //52 Hz
-        XL_ODR_104=0x04, //104 Hz
-        XL_ODR_208=0x05, //208 Hz
-        XL_ODR_416=0x06, //416 Hz
-        XL_ODR_833=0x07, //833 Hz
-        XL_ODR_1666=0x08, //1666 Hz
-        XL_ODR_3332=0x09, //3332 Hz
-        XL_ODR_6664=0x0A //6664 Hz
+    enum ODR:uint8_t{
+        ODR_12_5=0x01, //12.5
+        ODR_26=0x02, //26 Hz
+        ODR_52=0x03, //52 Hz
+        ODR_104=0x04, //104 Hz
+        ODR_208=0x05, //208 Hz
+        ODR_416=0x06, //416 Hz
+        ODR_833=0x07, //833 Hz
+        ODR_1666=0x08, //1666 Hz
+        ODR_3332=0x09, //3332 Hz
+        ODR_6664=0x0A //6664 Hz
     };
 
     enum XL_POWER_MODES{
         XL_POWER_DOWN, XL_ULTRALOW, XL_LOW, XL_NORMAL, XL_HIGH_PERF 
     };
 
-    XL_ODR samplingRate=XL_ODR_52;
-    XL_SCALE scale=XL_2G;
+    ODR samplingRate=ODR_52;
+    XL_SCALE xl_scale=XL_2G;
 
-};
-
-struct GyroSettings{
     /**
     *@brief Angular rate sensitivity
     */
@@ -94,24 +90,7 @@ struct GyroSettings{
         GYRO_2000_DPS=2000 
     };
 
-        /**
-    * @brief Angular rate output data rate
-    */
-    enum GYRO_ODR{ //remember to set this :uint8_t
-        GYRO_ODR_12_5=0x01, //12.5
-        GYRO_ODR_26=0x02, //26 Hz
-        GYRO_ODR_52=0x03, //52 Hz
-        GYRO_ODR_104=0x04, //104 Hz
-        GYRO_ODR_208=0x05, //208 Hz
-        GYRO_ODR_416=0x06, //416 Hz
-        GYRO_ODR_833=0x07, //833 Hz
-        GYRO_ODR_1666=0x8, //1666 Hz
-        GYRO_ODR_3332=0x09, //3332 Hz
-        GYRO_ODR_6664=0x0A //6664 Hz
-    };
-
-    GYRO_ODR samplingRate=GYRO_ODR_52;
-    GYRO_SCALE scale=GYRO_125_DPS;
+    GYRO_SCALE gyro_scale=GYRO_125_DPS;
 };
 
 

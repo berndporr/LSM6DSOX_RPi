@@ -1,4 +1,5 @@
 #include "LSM6DSOX.h"
+#include "LSM6DSOXSample.h"
 
 #ifdef NDEBUG
 constexpr bool DEBUG = false;
@@ -6,8 +7,9 @@ constexpr bool DEBUG = false;
 constexpr bool DEBUG = true;
 #endif
 
-void LSM6DSOX::start ()
+void LSM6DSOX::start (LSMSettings s)
 {
+    lsmsettings = s;
     //setup to detect rising edge on the data ready pin
     chipDRDY = gpiod_chip_open (DRDY_CHIP); //open chip with the gpio pins
     settings = gpiod_line_settings_new ();
@@ -33,18 +35,14 @@ void LSM6DSOX::start ()
     //init Accelerometer and Gyroscope
     initAccelerometer ();
     initGyro ();
-    //need to set drdy pin to go high for accelerometer and gyroscope
-    uint8_t data = LSM6DSOX_GYRO_NC | LSM6DSOX_XL_NC;
+    //need to set drdy pin to go high for new gyro and accelerometer sample
+    uint8_t data = LSM6DSOX_GYRO_NC;
     i2cWriteByte (LSM6DSOX_INT1_CTRL, data);
     //automatically flushes all data
     readGyroscope ();
     readAccelerometer ();
     //start thread with busy loop
     thread = std::thread (&LSM6DSOX::worker, this);
-    if (DEBUG)
-    {
-        std::cout << "Started!" << std::endl;
-    }
 }
 
 void LSM6DSOX::worker ()
@@ -54,19 +52,11 @@ void LSM6DSOX::worker ()
     {
         int r = gpiod_line_request_wait_edge_events (request,
                                                      -1); //wait indefinitely
-        if (DEBUG)
-        {
-            std::cout << "Edge event code:" << r << std::endl;
-        }
         if (r > 0)
         {
             struct gpiod_edge_event_buffer *buffer;
             buffer = gpiod_edge_event_buffer_new (1);
             int n = gpiod_line_request_read_edge_events (request, buffer, 1);
-            if (DEBUG)
-            {
-                std::cout << "Edge event read:" << n << std::endl;
-            }
             if (n > 0)
             {
                 //this reads data and releases data available bits in the status register
@@ -84,10 +74,6 @@ void LSM6DSOX::worker ()
 
 void LSM6DSOX::stop ()
 {
-    if (DEBUG)
-    {
-        std::cout << "Stopping..." << std::endl;
-    }
     running = false;
     if (thread.joinable ())
     {
@@ -108,21 +94,24 @@ void LSM6DSOX::stop ()
 void LSM6DSOX::getData ()
 {
     LSM6DSOXSample sample;
-    try {
-      RawData ad = readAccelerometer ();
-      RawData gd = readGyroscope ();
-      sample.ax = ad.x * xlRes;
-      sample.ay = ad.y * xlRes;
-      sample.az = ad.z * xlRes;
-      sample.gx = gd.x * gRes;
-      sample.gy = gd.y * gRes;
-      sample.gz = gd.z * gRes;
-      if (callback)
-	{
-	  callback (sample);
-	}
-    } catch (const char* msg) {
-      fprintf(stderr,"LSM6DSOX read error: %s\n",msg);
+    try
+    {
+        RawData ad = readAccelerometer ();
+        RawData gd = readGyroscope ();
+        sample.ax = ad.x * xlRes;
+        sample.ay = ad.y * xlRes;
+        sample.az = ad.z * xlRes;
+        sample.gx = gd.x * gRes;
+        sample.gy = gd.y * gRes;
+        sample.gz = gd.z * gRes;
+        if (callback)
+        {
+            callback (sample);
+        }
+    }
+    catch (const char *msg)
+    {
+        fprintf (stderr, "LSM6DSOX read error: %s\n", msg);
     }
 }
 
@@ -131,10 +120,10 @@ RawData LSM6DSOX::readGyroscope ()
     RawData gd;
     uint8_t tmp[32]; //test if data is 8 bit
     contiguousReadBytes (LSM6DSOX_OUTX_L_G, tmp,
-			 6);       //read 6 bytes from outx_l_g
-    gd.x = (tmp[1] << 8) | tmp[0]; //??
-    gd.y = (tmp[3] << 8) | tmp[2]; //??
-    gd.z = (tmp[5] << 8) | tmp[4]; //??
+                         6);       //read 6 bytes from outx_l_g
+    gd.x = (tmp[1] << 8) | tmp[0];
+    gd.y = (tmp[3] << 8) | tmp[2];
+    gd.z = (tmp[5] << 8) | tmp[4];
     return gd;
 }
 
@@ -143,10 +132,10 @@ RawData LSM6DSOX::readAccelerometer ()
     RawData ad;
     uint8_t tmp[32]; //test if data is 8 bit
     contiguousReadBytes (LSM6DSOX_OUTX_L_XL, tmp,
-                             6);       //read 6 bytes from outx_l_g
-    ad.x = (tmp[1] << 8) | tmp[0]; //??
-    ad.y = (tmp[3] << 8) | tmp[2]; //??
-    ad.z = (tmp[5] << 8) | tmp[4]; //??
+                         6);       //read 6 bytes from outx_l_g
+    ad.x = (tmp[1] << 8) | tmp[0];
+    ad.y = (tmp[3] << 8) | tmp[2];
+    ad.z = (tmp[5] << 8) | tmp[4];
     return ad;
 }
 
@@ -156,8 +145,12 @@ void LSM6DSOX::contiguousReadBytes (uint8_t address, uint8_t *container,
     int fd = i2cOpen (LSM6DSOX_ADDRESS);
     char tmp[32];
     tmp[0] = address;
-    write (fd, tmp, 1);
-    long int r = read (fd, container, nBytes);
+    long int r = write (fd, tmp, 1);
+    if (r < 0)
+    {
+        throw "Could not read bytes from i2c";
+    }
+    r = read (fd, container, nBytes);
     if ((r < 0) || (nBytes != r))
     {
         throw "Could not read bytes from i2c";
@@ -216,7 +209,7 @@ void LSM6DSOX::initGyro ()
     // [ODR_G3] [ODR_G2] [ODR_G1] [ODR_G0] [FS1_G] [FS0_G] [LPF2_G_EN] [0]
 
     uint8_t bits = 0x00;
-    bits = (gyroSettings.samplingRate & 0x0F) << 4;
+    bits = (lsmsettings.samplingRate & 0x0F) << 4;
     if (!bits)
     {
         throw "Gyroscope powered down!";
@@ -237,7 +230,7 @@ void LSM6DSOX::initAccelerometer ()
     // [ODR_XL3] [ODR_XL2] [ODR_XL1] [ODR_XL0] [FS1_XL] [FS0_XL] [LPF2_XL_EN] [0]
     uint8_t bits = 0x00;
     //0x08 keeps last 4 bits (15 in binary is 00001111, hex 000f)
-    bits = (xlSettings.samplingRate & 0x0F)
+    bits = (lsmsettings.samplingRate & 0x0F)
            << 4; //shift 4 bits back and write to ODR[3:0]
     if (!bits)
     {
@@ -288,74 +281,46 @@ uint8_t LSM6DSOX::flushData (uint8_t statusByte)
     {
         readGyroscope (); //throws away old gyro data
         result |= 0x02;
-        if (DEBUG)
-        {
-            std::cout << "Flushed gyroscope" << std::endl;
-        }
     }
     if (unsigned (statusByte) % 2 != 0)
     {
         readAccelerometer ();
         result |= 0x01;
-        if (DEBUG)
-        {
-            std::cout << "Flushed accelerometer" << std::endl;
-        }
     }
     return result;
 }
 
 void LSM6DSOX::registerCallback (LSM6DSOXCallback cb) { callback = cb; }
 
-void LSM6DSOX::setXLScale (XLSettings::XL_SCALE _scale)
-{
-    xlSettings.scale = _scale;
-}
-
-void LSM6DSOX::setGyroScale (GyroSettings::GYRO_SCALE _scale)
-{
-    gyroSettings.scale = _scale;
-}
-
-void LSM6DSOX::setXLSamplingRate (XLSettings::XL_ODR sr)
-{
-    xlSettings.samplingRate = sr;
-}
-
-void LSM6DSOX::setGyroSamplingRate (GyroSettings::GYRO_ODR sr)
-{
-    gyroSettings.samplingRate = sr;
-}
-
 float LSM6DSOX::getGRes ()
 {
-    return (float)gyroSettings.scale / 32768.0; //16 bit float
+    return (float)lsmsettings.gyro_scale / 32768.0; //16 bit float
 }
 
 float LSM6DSOX::getXlRes ()
 {
-    return (float)xlSettings.scale / 32768.0; //16 bit float
+    return (float)lsmsettings.xl_scale / 32768.0; //16 bit float
 }
 
 uint8_t LSM6DSOX::gyroScaleBits ()
 {
-    if (gyroSettings.scale == GyroSettings::GYRO_125_DPS)
+    if (lsmsettings.gyro_scale == LSMSettings::GYRO_125_DPS)
     {
         return 0x01; //set FS_125 bit high, otherwise will use settings below
     }
     uint8_t gyro_bits = 0x00;
-    switch (gyroSettings.scale)
+    switch (lsmsettings.gyro_scale)
     { //assumes FS_125 bit in CTRL2_G low
-    case GyroSettings::GYRO_250_DPS:
+    case LSMSettings::GYRO_250_DPS:
         gyro_bits = 0x00;
         break;
-    case GyroSettings::GYRO_500_DPS:
+    case LSMSettings::GYRO_500_DPS:
         gyro_bits = 0x01;
         break;
-    case GyroSettings::GYRO_1000_DPS:
+    case LSMSettings::GYRO_1000_DPS:
         gyro_bits = 0x02;
         break;
-    case GyroSettings::GYRO_2000_DPS:
+    case LSMSettings::GYRO_2000_DPS:
         gyro_bits = 0x03;
         break;
     default:
@@ -367,19 +332,11 @@ uint8_t LSM6DSOX::gyroScaleBits ()
 
 bool LSM6DSOX::isxlFSHigh ()
 {
-    bool fs = 0x00;
+    bool fs = false;
     uint8_t ctrl8_xl = i2cReadByte (LSM6DSOX_CTRL8_XL);
     if (ctrl8_xl & (1 << 1))
-    { //mask to see if 1st bit is 1
-        if (DEBUG)
-        {
-            std::cout << "FS XL high!" << std::endl;
-        }
+    {                             //mask to see if 1st bit is 1
         fs = (ctrl8_xl >> 1) & 1; //get bit as 1 or zero
-    }
-    else if (DEBUG)
-    {
-        std::cout << "FS XL low!" << std::endl;
     }
     return fs;
 }
@@ -389,21 +346,21 @@ uint8_t LSM6DSOX::xlScaleBits ()
     //read FS_MODE bit in CTRL8_XL
     bool fs = isxlFSHigh ();
     uint8_t xl_bits = 0x00;
-    switch (xlSettings.scale)
+    switch (lsmsettings.xl_scale)
     {
-    case XLSettings::XL_2G:
+    case LSMSettings::XL_2G:
         if (fs)
         {
             xl_bits = 0x01;
         }
         break;
-    case XLSettings::XL_4G:
+    case LSMSettings::XL_4G:
         xl_bits = 0x02;
         break;
-    case XLSettings::XL_8G:
+    case LSMSettings::XL_8G:
         xl_bits = 0x03;
         break;
-    case XLSettings::XL_16G:
+    case LSMSettings::XL_16G:
         xl_bits = 0x01;
         if (fs)
         {
