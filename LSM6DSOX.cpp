@@ -1,11 +1,6 @@
 #include "LSM6DSOX.h"
 #include "LSM6DSOXSample.h"
-
-#ifdef NDEBUG
-constexpr bool DEBUG = false;
-#else
-constexpr bool DEBUG = true;
-#endif
+#include <iostream>
 
 void LSM6DSOX::start (LSMSettings s)
 {

@@ -3,7 +3,6 @@
 #include <fcntl.h>
 #include <functional>
 #include <gpiod.h>
-#include <iostream>
 #include <linux/i2c-dev.h>
 #include <stdlib.h>
 #include <string>
@@ -34,16 +33,16 @@ class LSM6DSOX
      * @brief Opens gpio chip, sets gpio settings, line config, request config and
      * requests, starts thread running the busy loop
      */
-    void start (LSMSettings settings = LSMSettings());
+    void start (LSMSettings settings = LSMSettings ());
 
     /**
-  @brief Terminates thread, releases lines
-  */
+     * @brief Terminates thread, releases lines
+     */
     void stop ();
 
     /**
-   * @brief Assigns custom implementation of virtual callback
-   */
+     * @brief Assigns custom implementation of virtual callback
+     */
     void registerCallback (LSM6DSOXCallback cb);
 
     bool isxlFSHigh ();
@@ -66,13 +65,13 @@ class LSM6DSOX
     struct gpiod_line_request *request = nullptr;
 
     /**
-   * @brief Busy loop, waits for interrupt on data ready pin
-   */
+     * @brief Event loop, waits for interrupt on data ready pin
+     */
     void worker ();
 
     /**
-   * @brief Reads from accelerometer/gyroscope/temperature sensor registers
-   */
+     * @brief Reads from accelerometer/gyroscope/temperature sensor registers
+     */
     void getData ();
 
     RawData readGyroscope ();
