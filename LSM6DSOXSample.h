@@ -57,7 +57,7 @@ struct LSMSettings{
     };
 
     /**
-    * @brief Linear acceleration output data rate
+    * @brief Possible output data rate (ODR)
     */
     enum ODR:uint8_t{
         ODR_12_5=0x01, //12.5
@@ -76,7 +76,11 @@ struct LSMSettings{
         XL_POWER_DOWN, XL_ULTRALOW, XL_LOW, XL_NORMAL, XL_HIGH_PERF 
     };
 
+    /**
+    * @brief Requested output data rate also called Sampling rate!
+    */
     ODR samplingRate=ODR_52;
+    
     XL_SCALE xl_scale=XL_2G;
 
     /**

@@ -18,13 +18,8 @@ class Callback
   private:
     long get_elapsed_ms () const
     {
-        // 1. Get the current steady time point
         auto now = std::chrono::steady_clock::now ();
-
-        // 2. Calculate the difference since the program started
         auto elapsed = now - program_start;
-
-        // 3. Cast the duration to milliseconds
         return std::chrono::duration_cast<std::chrono::milliseconds> (elapsed)
             .count ();
     }
@@ -36,7 +31,11 @@ int main (int, char **)
     LSM6DSOX lsm6dS0x;
     lsm6dS0x.registerCallback (
         [&] (const LSM6DSOXSample &s) { callback.hasSample (s); });
-    lsm6dS0x.start ();
+    LSMSettings lsmsettings;
+    lsmsettings.samplingRate = LSMSettings::ODR_12_5;
+    lsm6dS0x.start (lsmsettings);
+    fprintf(stderr,"Sampling rate: %f\n",lsm6dS0x.getODR());
+    fprintf (stderr, "Press Enter to stop\n");
     getchar ();
     lsm6dS0x.stop ();
     return 0;

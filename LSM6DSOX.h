@@ -47,6 +47,37 @@ class LSM6DSOX
 
     bool isxlFSHigh ();
 
+    /**
+     * Gets the sampling rate in Hz
+     **/
+    float getODR () const
+    {
+        switch (lsmsettings.samplingRate)
+        {
+        case LSMSettings::ODR_12_5:
+            return 12.5;
+        case LSMSettings::ODR_26:
+            return 26;
+        case LSMSettings::ODR_52:
+            return 52;
+        case LSMSettings::ODR_104:
+            return 104;
+        case LSMSettings::ODR_208:
+            return 208;
+        case LSMSettings::ODR_416:
+            return 416;
+        case LSMSettings::ODR_833:
+            return 833;
+        case LSMSettings::ODR_1666:
+            return 1666;
+        case LSMSettings::ODR_3332:
+            return 3332;
+        case LSMSettings::ODR_6664:
+            return 6664;
+        }
+        return 0;
+    }
+
   protected:
     std::string device;  // device file
     uint8_t address = 0; // chip address
