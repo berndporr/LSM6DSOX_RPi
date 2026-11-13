@@ -26,7 +26,7 @@ cmake .
 make
 ```
 
-The install the library type:
+To install the library type:
 
 ```
 sudo make install
@@ -43,7 +43,7 @@ ctest
 
 ## Example
 
-Go to `demo`. There is `sample_printer` which prints the acceleration and gyro data on the screen till you press enter.
+Go to `demo`. There is `sample_printer` which prints the acceleration and gyro data on the screen till you press enter. You can also pipe its output to a text file.
 
 ## Troubleshooting
 
