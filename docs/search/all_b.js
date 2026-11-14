@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pi_205_0',['LSM6DSOX for Raspberry Pi 5',['../index.html',1,'']]],
-  ['pi_205_20to_20lsm6dsox_1',['Connect Pi 5 to LSM6DSOX',['../index.html#autotoc_md2',1,'']]]
+  ['raspberry_20pi_205_0',['LSM6DSOX driver class for the Raspberry Pi 5',['../md_README__doxy.html',1,'']]],
+  ['rawdata_1',['RawData',['../structRawData.html',1,'']]],
+  ['registercallback_2',['registerCallback',['../classLSM6DSOX.html#adeef9524df2758d92bc983b57ff86378',1,'LSM6DSOX']]]
 ];

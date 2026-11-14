@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['getgres_0',['getGRes',['../classLSM6DSOX.html#a7c2102fcf1ed3ffbffd19ec32e3de1b1',1,'LSM6DSOX']]],
-  ['getodr_1',['getODR',['../classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72',1,'LSM6DSOX']]],
-  ['getxlres_2',['getXlRes',['../classLSM6DSOX.html#a58b10a10814efd9ddaa7eee0416fc800',1,'LSM6DSOX']]],
-  ['gx_3',['gx',['../structLSM6DSOXSample.html#a7bbc70a505543121a11a9989c86f436e',1,'LSM6DSOXSample']]],
-  ['gy_4',['gy',['../structLSM6DSOXSample.html#a70123bb2c84f0992c62e39701252f374',1,'LSM6DSOXSample']]],
-  ['gyro_5fscale_5',['GYRO_SCALE',['../structLSMSettings.html#a9d65d6b36e31d4bdcf50b66f1ec3c81f',1,'LSMSettings']]],
-  ['gyro_5fscale_6',['gyro_scale',['../structLSMSettings.html#aa464f39660f37e5b28db1d398e83125f',1,'LSMSettings']]],
-  ['gyrocalibration_7',['gyroCalibration',['../structLSMSettings.html#aff65d8dc54c02e4013a9c49d1aa37e92',1,'LSMSettings']]],
-  ['gyroscalebits_8',['gyroScaleBits',['../classLSM6DSOX.html#aa0d4ba26bc17db738228bb612f1951c0',1,'LSM6DSOX']]],
-  ['gz_9',['gz',['../structLSM6DSOXSample.html#ad160ceab280dd6d4f72b6c43712b1f3f',1,'LSM6DSOXSample']]]
+  ['i2copen_0',['i2cOpen',['../classLSM6DSOX.html#a545f37dc6bd9926da45566e87328622f',1,'LSM6DSOX']]],
+  ['i2creadbyte_1',['i2cReadByte',['../classLSM6DSOX.html#a187146a2c003a987b0b9f40e81ea0327',1,'LSM6DSOX']]],
+  ['i2cwritebyte_2',['i2cWriteByte',['../classLSM6DSOX.html#a578dd469a2b68ac8f09804900ae7463d',1,'LSM6DSOX']]],
+  ['initaccelerometer_3',['initAccelerometer',['../classLSM6DSOX.html#adc3c96ff6997744e388fe59647b60576',1,'LSM6DSOX']]],
+  ['initgyro_4',['initGyro',['../classLSM6DSOX.html#ad175891d84f5312a7c1e5003f3205620',1,'LSM6DSOX']]]
 ];

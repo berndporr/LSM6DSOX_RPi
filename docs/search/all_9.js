@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maxgyrooffset_0',['maxGyroOffset',['../classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d',1,'LSM6DSOX']]]
+  ['odr_0',['ODR',['../structLSMSettings.html#ade625a54d22f155138e453535e1ce706',1,'LSMSettings']]]
 ];

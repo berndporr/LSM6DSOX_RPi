@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['samplingrate_0',['samplingRate',['../structLSMSettings.html#aa565cc4ec903dac1c35174d425a22d36',1,'LSMSettings']]],
-  ['start_1',['start',['../classLSM6DSOX.html#a3917982dc86ff1f60062940408f04ae0',1,'LSM6DSOX']]],
-  ['stop_2',['stop',['../classLSM6DSOX.html#a12b731ae5a0d5b0f4c2ebcf9abcaad2b',1,'LSM6DSOX']]]
+  ['temperature_0',['temperature',['../structLSM6DSOXSample.html#a834262831a6b5c4fd2f14f6bf80f0606',1,'LSM6DSOXSample']]],
+  ['the_20raspberry_20pi_205_1',['LSM6DSOX driver class for the Raspberry Pi 5',['../md_README__doxy.html',1,'']]],
+  ['throwstatus_2',['throwStatus',['../classLSM6DSOX.html#a005c643aa93d89f89b0a7d861065c231',1,'LSM6DSOX']]]
 ];

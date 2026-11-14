@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['raspberry_20pi_205_0',['LSM6DSOX for Raspberry Pi 5',['../index.html',1,'']]],
-  ['rawdata_1',['RawData',['../structRawData.html',1,'']]],
-  ['registercallback_2',['registerCallback',['../classLSM6DSOX.html#adeef9524df2758d92bc983b57ff86378',1,'LSM6DSOX']]],
-  ['requirements_3',['Requirements',['../index.html#autotoc_md1',1,'']]]
+  ['samplingrate_0',['samplingRate',['../structLSMSettings.html#aa565cc4ec903dac1c35174d425a22d36',1,'LSMSettings']]],
+  ['start_1',['start',['../classLSM6DSOX.html#a3917982dc86ff1f60062940408f04ae0',1,'LSM6DSOX']]],
+  ['stop_2',['stop',['../classLSM6DSOX.html#a12b731ae5a0d5b0f4c2ebcf9abcaad2b',1,'LSM6DSOX']]]
 ];

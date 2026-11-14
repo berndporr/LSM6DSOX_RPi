@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['compile_0',['Compile',['../index.html#autotoc_md3',1,'']]],
-  ['connect_20pi_205_20to_20lsm6dsox_1',['Connect Pi 5 to LSM6DSOX',['../index.html#autotoc_md2',1,'']]],
-  ['credit_2',['Credit',['../index.html#autotoc_md7',1,'']]]
+  ['class_20for_20the_20raspberry_20pi_205_0',['LSM6DSOX driver class for the Raspberry Pi 5',['../md_README__doxy.html',1,'']]],
+  ['credit_1',['Credit',['../md_README__doxy.html#autotoc_md1',1,'']]]
 ];

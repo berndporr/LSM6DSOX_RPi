@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['5_0',['LSM6DSOX for Raspberry Pi 5',['../index.html',1,'']]],
-  ['5_20to_20lsm6dsox_1',['Connect Pi 5 to LSM6DSOX',['../index.html#autotoc_md2',1,'']]]
+  ['5_0',['LSM6DSOX driver class for the Raspberry Pi 5',['../md_README__doxy.html',1,'']]]
 ];
