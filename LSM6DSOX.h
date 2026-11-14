@@ -10,6 +10,11 @@
 #ifndef LSM6DSOX_H
 #define LSM6DSOX_H
 
+/**
+ * @brief LSM6DSOX driver class.
+ * Main class performing the acquisition and then calling the
+ * callback at the sampling rate.
+ */
 class LSM6DSOX
 {
   public:

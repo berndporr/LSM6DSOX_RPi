@@ -82,12 +82,17 @@ $(function() {
   <div class="headertitle"><div class="title">LSM6DSOX Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classLSM6DSOX.html" title="LSM6DSOX driver class. Main class performing the acquisition and then calling the callback at the sam...">LSM6DSOX</a> driver class. Main class performing the acquisition and then calling the callback at the sampling rate.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="LSM6DSOX_8h_source.html">LSM6DSOX.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for LSM6DSOX:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLSM6DSOX__coll__graph.png" border="0" usemap="#aLSM6DSOX_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="aLSM6DSOX_coll__map" id="aLSM6DSOX_coll__map">
-<area shape="rect" title=" " alt="" coords="67,106,160,134"/>
+<area shape="rect" title="LSM6DSOX driver class. Main class performing the acquisition and then calling the callback at the sam..." alt="" coords="67,106,160,134"/>
 <area shape="rect" href="structLSMSettings.html" title="Settings for the LSM6DSOX. These settings should work out of the box on a RPI5." alt="" coords="5,5,107,33"/>
 <area shape="poly" title=" " alt="" coords="52,46,55,65,60,81,70,94,85,105,80,106,67,97,55,83,49,66,50,51"/>
 <area shape="rect" href="structRawData.html" title="Data returned form the LSM." alt="" coords="130,5,211,33"/>
@@ -105,10 +110,10 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>LSM6DSOXCallback</b>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3917982dc86ff1f60062940408f04ae0" id="r_a3917982dc86ff1f60062940408f04ae0"><td class="memItemLeft" align="right" valign="top"><a id="a3917982dc86ff1f60062940408f04ae0" name="a3917982dc86ff1f60062940408f04ae0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> (<a class="el" href="structLSMSettings.html">LSMSettings</a> settings=<a class="el" href="structLSMSettings.html">LSMSettings</a>())</td></tr>
-<tr class="memdesc:a3917982dc86ff1f60062940408f04ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the <a class="el" href="classLSM6DSOX.html">LSM6DSOX</a> data acquisition. Opens gpio chip, sets gpio settings, line config, request config and requests, starts the event loop. It throws an exception if there are any problems. <br /></td></tr>
+<tr class="memdesc:a3917982dc86ff1f60062940408f04ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the <a class="el" href="classLSM6DSOX.html" title="LSM6DSOX driver class. Main class performing the acquisition and then calling the callback at the sam...">LSM6DSOX</a> data acquisition. Opens gpio chip, sets gpio settings, line config, request config and requests, starts the event loop. It throws an exception if there are any problems. <br /></td></tr>
 <tr class="memitem:a12b731ae5a0d5b0f4c2ebcf9abcaad2b" id="r_a12b731ae5a0d5b0f4c2ebcf9abcaad2b"><td class="memItemLeft" align="right" valign="top"><a id="a12b731ae5a0d5b0f4c2ebcf9abcaad2b" name="a12b731ae5a0d5b0f4c2ebcf9abcaad2b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
-<tr class="memdesc:a12b731ae5a0d5b0f4c2ebcf9abcaad2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the <a class="el" href="classLSM6DSOX.html">LSM6DSOX</a> data acquisition. Terminates thread, releases lines. <br /></td></tr>
+<tr class="memdesc:a12b731ae5a0d5b0f4c2ebcf9abcaad2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the <a class="el" href="classLSM6DSOX.html" title="LSM6DSOX driver class. Main class performing the acquisition and then calling the callback at the sam...">LSM6DSOX</a> data acquisition. Terminates thread, releases lines. <br /></td></tr>
 <tr class="memitem:adeef9524df2758d92bc983b57ff86378" id="r_adeef9524df2758d92bc983b57ff86378"><td class="memItemLeft" align="right" valign="top"><a id="adeef9524df2758d92bc983b57ff86378" name="adeef9524df2758d92bc983b57ff86378"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>registerCallback</b> (<a class="el" href="#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> cb)</td></tr>
 <tr class="memdesc:adeef9524df2758d92bc983b57ff86378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the callback. <br /></td></tr>
@@ -201,7 +206,9 @@ Friends</h2></td></tr>
 <tr class="memitem:a8923bf13efa4efc1f723e1e2e32fa278" id="r_a8923bf13efa4efc1f723e1e2e32fa278"><td class="memItemLeft" align="right" valign="top"><a id="a8923bf13efa4efc1f723e1e2e32fa278" name="a8923bf13efa4efc1f723e1e2e32fa278"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>LSM6DSOXTest</b></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classLSM6DSOX.html" title="LSM6DSOX driver class. Main class performing the acquisition and then calling the callback at the sam...">LSM6DSOX</a> driver class. Main class performing the acquisition and then calling the callback at the sampling rate. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ada2b38b67b89494bfd72e52797f65e2e" name="ada2b38b67b89494bfd72e52797f65e2e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada2b38b67b89494bfd72e52797f65e2e">&#9670;&#160;</a></span>contiguousReadBytes()</h2>
 

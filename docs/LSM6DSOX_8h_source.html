@@ -85,112 +85,112 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef LSM6DSOX_H</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define LSM6DSOX_H</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html">   13</a></span><span class="keyword">class </span>LSM6DSOX</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    LSM6DSOX () = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    ~LSM6DSOX () {}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">   23</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> = std::function&lt;void (<span class="keyword">const</span> <a class="code hl_struct" href="structLSM6DSOXSample.html">LSM6DSOXSample</a> &amp;)&gt;;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html">   18</a></span><span class="keyword">class </span>LSM6DSOX</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    LSM6DSOX () = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ~LSM6DSOX () {}</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d">   29</a></span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d">maxGyroOffset</a> = 0.087;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#a3917982dc86ff1f60062940408f04ae0">start</a> (<a class="code hl_struct" href="structLSMSettings.html">LSMSettings</a> settings = <a class="code hl_struct" href="structLSMSettings.html">LSMSettings</a> ());</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#a12b731ae5a0d5b0f4c2ebcf9abcaad2b">stop</a> ();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#adeef9524df2758d92bc983b57ff86378">registerCallback</a> (<a class="code hl_typedef" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> cb);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">   28</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> = std::function&lt;void (<span class="keyword">const</span> <a class="code hl_struct" href="structLSM6DSOXSample.html">LSM6DSOXSample</a> &amp;)&gt;;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d">   34</a></span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d">maxGyroOffset</a> = 0.087;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#a3917982dc86ff1f60062940408f04ae0">start</a> (<a class="code hl_struct" href="structLSMSettings.html">LSMSettings</a> settings = <a class="code hl_struct" href="structLSMSettings.html">LSMSettings</a> ());</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#a12b731ae5a0d5b0f4c2ebcf9abcaad2b">stop</a> ();</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
-<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72">   52</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72">getODR</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">switch</span> (lsmsettings.samplingRate)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">case</span> LSMSettings::ODR_12_5:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">return</span> 12.5;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">case</span> LSMSettings::ODR_26:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">return</span> 26;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">case</span> LSMSettings::ODR_52:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">return</span> 52;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">case</span> LSMSettings::ODR_104:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">return</span> 104;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">case</span> LSMSettings::ODR_208:</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">return</span> 208;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">case</span> LSMSettings::ODR_416:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">return</span> 416;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">case</span> LSMSettings::ODR_833:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">return</span> 833;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">case</span> LSMSettings::ODR_1666:</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">return</span> 1666;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">case</span> LSMSettings::ODR_3332:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">return</span> 3332;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">case</span> LSMSettings::ODR_6664:</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">return</span> 6664;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#adeef9524df2758d92bc983b57ff86378">registerCallback</a> (<a class="code hl_typedef" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> cb);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72">   57</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72">getODR</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">switch</span> (lsmsettings.samplingRate)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">case</span> LSMSettings::ODR_12_5:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">return</span> 12.5;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">case</span> LSMSettings::ODR_26:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">return</span> 26;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">case</span> LSMSettings::ODR_52:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> 52;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">case</span> LSMSettings::ODR_104:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">return</span> 104;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">case</span> LSMSettings::ODR_208:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">return</span> 208;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">case</span> LSMSettings::ODR_416:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">return</span> 416;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">case</span> LSMSettings::ODR_833:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">return</span> 833;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">case</span> LSMSettings::ODR_1666:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> 1666;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">case</span> LSMSettings::ODR_3332:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordflow">return</span> 3332;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">case</span> LSMSettings::ODR_6664:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">return</span> 6664;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::thread thread;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_struct" href="structLSMSettings.html">LSMSettings</a> lsmsettings{};</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">friend</span> <span class="keyword">class </span>LSM6DSOXTest; <span class="comment">// for unit testing</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    uint8_t running = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_typedef" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> callback;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">float</span> xlRes; <span class="comment">// accelerometer resolution</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">float</span> gRes;  <span class="comment">// gyroscope resolution</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    RawData gyroOffset; <span class="comment">// gyro offset</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">bool</span> gyroCalibrationFlag = <span class="keyword">false</span>; <span class="comment">// true means it&#39;s calibrating</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">int</span> nGyroCalibrationReadings = 0; <span class="comment">// number of calibration readings</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">struct </span>gpiod_chip *chipDRDY = <span class="keyword">nullptr</span>; <span class="comment">// chip where the data ready pin is</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">struct </span>gpiod_line_settings *settings = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">struct </span>gpiod_line_config *line_cfg = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">struct </span>gpiod_request_config *req_cfg = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">struct </span>gpiod_line_request *request = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> isxlFSHigh ();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> worker ();</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">void</span> getData ();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    RawData readGyroscope ();</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    RawData readAccelerometer ();</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#ada2b38b67b89494bfd72e52797f65e2e">contiguousReadBytes</a> (uint8_t address, uint8_t *container,</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                              uint8_t nBytes);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classLSM6DSOX.html#a545f37dc6bd9926da45566e87328622f">i2cOpen</a> (<span class="keywordtype">int</span> address);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#a578dd469a2b68ac8f09804900ae7463d">i2cWriteByte</a> (uint8_t address, uint8_t data);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    std::thread thread;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_struct" href="structLSMSettings.html">LSMSettings</a> lsmsettings{};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">friend</span> <span class="keyword">class </span>LSM6DSOXTest; <span class="comment">// for unit testing</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    uint8_t running = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_typedef" href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOXCallback</a> callback;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">float</span> xlRes; <span class="comment">// accelerometer resolution</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">float</span> gRes;  <span class="comment">// gyroscope resolution</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    RawData gyroOffset; <span class="comment">// gyro offset</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">bool</span> gyroCalibrationFlag = <span class="keyword">false</span>; <span class="comment">// true means it&#39;s calibrating</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">int</span> nGyroCalibrationReadings = 0; <span class="comment">// number of calibration readings</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keyword">struct </span>gpiod_chip *chipDRDY = <span class="keyword">nullptr</span>; <span class="comment">// chip where the data ready pin is</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">struct </span>gpiod_line_settings *settings = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">struct </span>gpiod_line_config *line_cfg = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">struct </span>gpiod_request_config *req_cfg = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">struct </span>gpiod_line_request *request = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">bool</span> isxlFSHigh ();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> worker ();</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">void</span> getData ();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    RawData readGyroscope ();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    RawData readAccelerometer ();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#ada2b38b67b89494bfd72e52797f65e2e">contiguousReadBytes</a> (uint8_t address, uint8_t *container,</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                              uint8_t nBytes);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classLSM6DSOX.html#a545f37dc6bd9926da45566e87328622f">i2cOpen</a> (<span class="keywordtype">int</span> address);</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#a187146a2c003a987b0b9f40e81ea0327">i2cReadByte</a> (uint8_t address);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#a578dd469a2b68ac8f09804900ae7463d">i2cWriteByte</a> (uint8_t address, uint8_t data);</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#ad175891d84f5312a7c1e5003f3205620">initGyro</a> ();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#a187146a2c003a987b0b9f40e81ea0327">i2cReadByte</a> (uint8_t address);</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#adc3c96ff6997744e388fe59647b60576">initAccelerometer</a> ();</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classLSM6DSOX.html#a005c643aa93d89f89b0a7d861065c231">throwStatus</a> (uint8_t statusByte);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#ad175891d84f5312a7c1e5003f3205620">initGyro</a> ();</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLSM6DSOX.html#adc3c96ff6997744e388fe59647b60576">initAccelerometer</a> ();</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#aa439336584950aef27b81cd67d45fe39">flushData</a> (uint8_t statusByte);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classLSM6DSOX.html#a7c2102fcf1ed3ffbffd19ec32e3de1b1">getGRes</a> ();</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classLSM6DSOX.html#a005c643aa93d89f89b0a7d861065c231">throwStatus</a> (uint8_t statusByte);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#aa439336584950aef27b81cd67d45fe39">flushData</a> (uint8_t statusByte);</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classLSM6DSOX.html#a58b10a10814efd9ddaa7eee0416fc800">getXlRes</a> ();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classLSM6DSOX.html#a7c2102fcf1ed3ffbffd19ec32e3de1b1">getGRes</a> ();</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#aa0d4ba26bc17db738228bb612f1951c0">gyroScaleBits</a> ();</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#a947e689d49d7ba6e460ab450519100fc">xlScaleBits</a> ();</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>};</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="classLSM6DSOX.html#a58b10a10814efd9ddaa7eee0416fc800">getXlRes</a> ();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#aa0d4ba26bc17db738228bb612f1951c0">gyroScaleBits</a> ();</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    uint8_t <a class="code hl_function" href="classLSM6DSOX.html#a947e689d49d7ba6e460ab450519100fc">xlScaleBits</a> ();</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>};</div>
 </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a005c643aa93d89f89b0a7d861065c231"><div class="ttname"><a href="classLSM6DSOX.html#a005c643aa93d89f89b0a7d861065c231">LSM6DSOX::throwStatus</a></div><div class="ttdeci">const char * throwStatus(uint8_t statusByte)</div><div class="ttdoc">throws a different exception based on what&#39;s in the status register</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:279</div></div>
-<div class="ttc" id="aclassLSM6DSOX_html_a0b52ddd52816ebc307e002f3a5bd888d"><div class="ttname"><a href="classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d">LSM6DSOX::maxGyroOffset</a></div><div class="ttdeci">static constexpr float maxGyroOffset</div><div class="ttdoc">Max permitted gyro error. 0.017 it&#39;s according to the datasheet (1 degrees) so using ~5 times higher.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.h:29</div></div>
+<div class="ttc" id="aclassLSM6DSOX_html_a0b52ddd52816ebc307e002f3a5bd888d"><div class="ttname"><a href="classLSM6DSOX.html#a0b52ddd52816ebc307e002f3a5bd888d">LSM6DSOX::maxGyroOffset</a></div><div class="ttdeci">static constexpr float maxGyroOffset</div><div class="ttdoc">Max permitted gyro error. 0.017 it&#39;s according to the datasheet (1 degrees) so using ~5 times higher.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.h:34</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a12b731ae5a0d5b0f4c2ebcf9abcaad2b"><div class="ttname"><a href="classLSM6DSOX.html#a12b731ae5a0d5b0f4c2ebcf9abcaad2b">LSM6DSOX::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the LSM6DSOX data acquisition. Terminates thread, releases lines.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:92</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a187146a2c003a987b0b9f40e81ea0327"><div class="ttname"><a href="classLSM6DSOX.html#a187146a2c003a987b0b9f40e81ea0327">LSM6DSOX::i2cReadByte</a></div><div class="ttdeci">uint8_t i2cReadByte(uint8_t address)</div><div class="ttdoc">Reads one byte from register at.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:218</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a3917982dc86ff1f60062940408f04ae0"><div class="ttname"><a href="classLSM6DSOX.html#a3917982dc86ff1f60062940408f04ae0">LSM6DSOX::start</a></div><div class="ttdeci">void start(LSMSettings settings=LSMSettings())</div><div class="ttdoc">Starts the LSM6DSOX data acquisition. Opens gpio chip, sets gpio settings, line config,...</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:6</div></div>
@@ -198,7 +198,7 @@ $(function() {
 <div class="ttc" id="aclassLSM6DSOX_html_a578dd469a2b68ac8f09804900ae7463d"><div class="ttname"><a href="classLSM6DSOX.html#a578dd469a2b68ac8f09804900ae7463d">LSM6DSOX::i2cWriteByte</a></div><div class="ttdeci">void i2cWriteByte(uint8_t address, uint8_t data)</div><div class="ttdoc">Writes one byte of.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:208</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a58b10a10814efd9ddaa7eee0416fc800"><div class="ttname"><a href="classLSM6DSOX.html#a58b10a10814efd9ddaa7eee0416fc800">LSM6DSOX::getXlRes</a></div><div class="ttdeci">float getXlRes()</div><div class="ttdoc">Accelerometer resolution (16 bit).</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:330</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a7c2102fcf1ed3ffbffd19ec32e3de1b1"><div class="ttname"><a href="classLSM6DSOX.html#a7c2102fcf1ed3ffbffd19ec32e3de1b1">LSM6DSOX::getGRes</a></div><div class="ttdeci">float getGRes()</div><div class="ttdoc">Gyroscope resolution (16 bit).</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:325</div></div>
-<div class="ttc" id="aclassLSM6DSOX_html_a9000678bec5f7b099e8fbc7d95a03f72"><div class="ttname"><a href="classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72">LSM6DSOX::getODR</a></div><div class="ttdeci">float getODR() const</div><div class="ttdef"><b>Definition</b> LSM6DSOX.h:52</div></div>
+<div class="ttc" id="aclassLSM6DSOX_html_a9000678bec5f7b099e8fbc7d95a03f72"><div class="ttname"><a href="classLSM6DSOX.html#a9000678bec5f7b099e8fbc7d95a03f72">LSM6DSOX::getODR</a></div><div class="ttdeci">float getODR() const</div><div class="ttdef"><b>Definition</b> LSM6DSOX.h:57</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_a947e689d49d7ba6e460ab450519100fc"><div class="ttname"><a href="classLSM6DSOX.html#a947e689d49d7ba6e460ab450519100fc">LSM6DSOX::xlScaleBits</a></div><div class="ttdeci">uint8_t xlScaleBits()</div><div class="ttdoc">Get bits to write to accelerometer register CTRL1_XL to set scale. Shifts bits automatically so they ...</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:374</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_aa0d4ba26bc17db738228bb612f1951c0"><div class="ttname"><a href="classLSM6DSOX.html#aa0d4ba26bc17db738228bb612f1951c0">LSM6DSOX::gyroScaleBits</a></div><div class="ttdeci">uint8_t gyroScaleBits()</div><div class="ttdoc">Get bits to write to gyro register CTRL2_G to set scale. Shifts bits automatically so they can direct...</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:335</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_aa439336584950aef27b81cd67d45fe39"><div class="ttname"><a href="classLSM6DSOX.html#aa439336584950aef27b81cd67d45fe39">LSM6DSOX::flushData</a></div><div class="ttdeci">uint8_t flushData(uint8_t statusByte)</div><div class="ttdoc">Bit of a hack, but uses status register readings to flush any existing data and allowing interrupt pi...</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:307</div></div>
@@ -206,7 +206,7 @@ $(function() {
 <div class="ttc" id="aclassLSM6DSOX_html_ada2b38b67b89494bfd72e52797f65e2e"><div class="ttname"><a href="classLSM6DSOX.html#ada2b38b67b89494bfd72e52797f65e2e">LSM6DSOX::contiguousReadBytes</a></div><div class="ttdeci">void contiguousReadBytes(uint8_t address, uint8_t *container, uint8_t nBytes)</div><div class="ttdoc">reads bytes contiguously from the given address</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:172</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_adc3c96ff6997744e388fe59647b60576"><div class="ttname"><a href="classLSM6DSOX.html#adc3c96ff6997744e388fe59647b60576">LSM6DSOX::initAccelerometer</a></div><div class="ttdeci">void initAccelerometer()</div><div class="ttdoc">Enable accelerometer, set sampling rate and data scale from xlSettings.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:256</div></div>
 <div class="ttc" id="aclassLSM6DSOX_html_adeef9524df2758d92bc983b57ff86378"><div class="ttname"><a href="classLSM6DSOX.html#adeef9524df2758d92bc983b57ff86378">LSM6DSOX::registerCallback</a></div><div class="ttdeci">void registerCallback(LSM6DSOXCallback cb)</div><div class="ttdoc">Registers the callback.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.cpp:323</div></div>
-<div class="ttc" id="aclassLSM6DSOX_html_af3683656455c773ea6722e54e423db3b"><div class="ttname"><a href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOX::LSM6DSOXCallback</a></div><div class="ttdeci">std::function&lt; void(const LSM6DSOXSample &amp;)&gt; LSM6DSOXCallback</div><div class="ttdoc">Callback prototype carrying one sample.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.h:23</div></div>
+<div class="ttc" id="aclassLSM6DSOX_html_af3683656455c773ea6722e54e423db3b"><div class="ttname"><a href="classLSM6DSOX.html#af3683656455c773ea6722e54e423db3b">LSM6DSOX::LSM6DSOXCallback</a></div><div class="ttdeci">std::function&lt; void(const LSM6DSOXSample &amp;)&gt; LSM6DSOXCallback</div><div class="ttdoc">Callback prototype carrying one sample.</div><div class="ttdef"><b>Definition</b> LSM6DSOX.h:28</div></div>
 <div class="ttc" id="astructLSM6DSOXSample_html"><div class="ttname"><a href="structLSM6DSOXSample.html">LSM6DSOXSample</a></div><div class="ttdoc">Sample returned by the callback.</div><div class="ttdef"><b>Definition</b> LSM6DSOXSample.h:22</div></div>
 <div class="ttc" id="astructLSMSettings_html"><div class="ttname"><a href="structLSMSettings.html">LSMSettings</a></div><div class="ttdoc">Settings for the LSM6DSOX. These settings should work out of the box on a RPI5.</div><div class="ttdef"><b>Definition</b> LSM6DSOXSample.h:66</div></div>
 </div><!-- fragment --></div><!-- contents -->
