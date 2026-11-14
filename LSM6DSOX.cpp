@@ -1,5 +1,6 @@
 #include "LSM6DSOX.h"
 #include "LSM6DSOXSample.h"
+#include <cmath>
 #include <iostream>
 
 void LSM6DSOX::start (LSMSettings s)
@@ -48,6 +49,15 @@ void LSM6DSOX::start (LSMSettings s)
         {
             stop();
             throw "Zero samples collected within one second even that the worker has been running.";
+        }
+        if (abs(gyroOffset.x * gRes) > maxGyroOffset) {
+            throw "Gyro x has too high offset.";
+        }
+        if (abs(gyroOffset.y * gRes) > maxGyroOffset) {
+            throw "Gyro y has too high offset.";
+        }
+        if (abs(gyroOffset.z * gRes) > maxGyroOffset) {
+            throw "Gyro z has too high offset.";
         }
     }
 }

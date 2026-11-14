@@ -5,6 +5,9 @@
 #include <string>
 #include "LSM6DSOX_Registers.h"
 
+/**
+ * @brief Data returned form the LSM.
+ */
 struct RawData
 {
     int16_t x = 0;
@@ -12,49 +15,74 @@ struct RawData
     int16_t z = 0;
 };
 
+/**
+ * @brief Sample returned by the callback.
+ */
 struct LSM6DSOXSample
 {
     /**
-    * Acceleration on x axis (m^2/s)
+    * @brief Acceleration on x axis (m^2/s)
     */
     float ax = 0;
     /**
-    * Acceleration on y axis (m^2/s)
+    * @brief Acceleration on y axis (m^2/s)
     */
     float ay = 0;
     /**
-    * Acceleration on z axis (m^2/s)
+    * @brief Acceleration on z axis (m^2/s)
     */
     float az = 0;
     /**
-    * Rotation on x axis (deg/s)
+    * @brief Rotation on x axis (deg/s)
     */
     float gx = 0;
 
     /**
-    * Rotation on y axis (deg/s)
+    * @brief Rotation on y axis (deg/s)
     */
     float gy = 0;
 
     /**
-    * Rotation on z axis (deg/s)
+    * @brief Rotation on z axis (deg/s)
     */
     float gz = 0;
 
+    /**
+    * @brief Temperature in C celsius.
+    */
     float temperature = 0;
 
+    /**
+     * @brief If the sample is valid.
+     */
     bool valid = true;
 };
 
+/**
+ * @brief Settings for the LSM6DSOX.
+ * These settings should work out of the box on a RPI5.
+ */
 struct LSMSettings
 {
+    /**
+     * @brief Default path of the I2C bus.
+     */
     std::string device = "/dev/i2c-1";
 
+    /**
+     * @brief Default address on the I2C bus.
+     */
     uint8_t address = LSM6DSOX_ADDRESS;
 
+    /**
+     * @brief Default GPIO which receives the data ready signal.
+     */
     unsigned int LMS6DSOX_DRDY_GPIO
         = 17; // RPi physical pin 15, connected to data ready pin on LSM
 
+    /**
+     * @brief Default GPIO chip path which receives the data ready signal.
+     */
     std::string DRDY_CHIP = "/dev/gpiochip0";
 
     /**
@@ -85,15 +113,6 @@ struct LSMSettings
         ODR_6664 = 0x0A  //6664 Hz
     };
 
-    enum XL_POWER_MODES
-    {
-        XL_POWER_DOWN,
-        XL_ULTRALOW,
-        XL_LOW,
-        XL_NORMAL,
-        XL_HIGH_PERF
-    };
-
     /**
     * @brief Requested output data rate also called Sampling rate!
     */
@@ -102,7 +121,7 @@ struct LSMSettings
     XL_SCALE xl_scale = XL_2G;
 
     /**
-    *@brief Angular rate sensitivity
+    * @brief Angular rate sensitivity
     */
     enum GYRO_SCALE
     {
@@ -114,14 +133,28 @@ struct LSMSettings
     };
 
     /**
-     * Default full scale of the Gyro.
+     * @brief Default full scale of the Gyro.
      */
     GYRO_SCALE gyro_scale = GYRO_125_DPS;
 
     /**
-     * If self calibration of the offset should be done at startup.
+     * @brief If self calibration of the gyro.
+     * The gyro has an offset. If the sensor is not rotating at startup
+     * then do a self calibration here. It measures for one sec and then
+     * averages over these readings. It also acts as a self test.
+     * If no readings are available during self test it will trigger an exception.
      */
     bool gyroCalibration = true;
+
+    // Not used so far.
+    enum XL_POWER_MODES
+    {
+        XL_POWER_DOWN,
+        XL_ULTRALOW,
+        XL_LOW,
+        XL_NORMAL,
+        XL_HIGH_PERF
+    };
 };
 
 #endif

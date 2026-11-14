@@ -17,25 +17,34 @@ class LSM6DSOX
 
     ~LSM6DSOX () {}
 
+    /**
+     * @brief Callback prototype carrying one sample.
+     */
     using LSM6DSOXCallback = std::function<void (const LSM6DSOXSample &)>;
 
     /**
-     * @brief Opens gpio chip, sets gpio settings, line config, request config and
-     * requests, starts thread running the busy loop
+     * @brief Max permitted gyro error. 
+     * 0.017 it's according to the datasheet (1 degrees) so using ~5 times higher.
+     */
+    constexpr static float maxGyroOffset = 0.087;
+
+    /**
+     * @brief Starts the LSM6DSOX data acquisition.
+     * Opens gpio chip, sets gpio settings, line config, request config and
+     * requests, starts the event loop. It throws an exception if there are any problems.
      */
     void start (LSMSettings settings = LSMSettings ());
 
     /**
-     * @brief Terminates thread, releases lines
+     * @brief Stops the LSM6DSOX data acquisition.
+     * Terminates thread, releases lines.
      */
     void stop ();
 
     /**
-     * @brief Assigns custom implementation of virtual callback
+     * @brief Registers the callback
      */
     void registerCallback (LSM6DSOXCallback cb);
-
-    bool isxlFSHigh ();
 
     /**
      * Gets the sampling rate in Hz
@@ -86,14 +95,10 @@ class LSM6DSOX
     struct gpiod_request_config *req_cfg = nullptr;
     struct gpiod_line_request *request = nullptr;
 
-    /**
-     * @brief Event loop, waits for interrupt on data ready pin
-     */
+    bool isxlFSHigh ();
+
     void worker ();
 
-    /**
-     * @brief Reads from accelerometer/gyroscope/temperature sensor registers
-     */
     void getData ();
 
     RawData readGyroscope ();
