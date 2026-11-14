@@ -39,6 +39,17 @@ void LSM6DSOX::start (LSMSettings s)
     readAccelerometer ();
     //start thread with busy loop
     thread = std::thread (&LSM6DSOX::worker, this);
+    if (lsmsettings.gyroCalibration)
+    {
+        gyroCalibrationFlag = true;
+        sleep (1);
+        gyroCalibrationFlag = false;
+        if (0 == nGyroCalibrationReadings)
+        {
+            stop();
+            throw "Zero samples collected within one second even that the worker has been running.";
+        }
+    }
 }
 
 void LSM6DSOX::worker ()
@@ -100,7 +111,7 @@ void LSM6DSOX::getData ()
         sample.gx = gd.x * gRes;
         sample.gy = gd.y * gRes;
         sample.gz = gd.z * gRes;
-        if (callback)
+        if ((!gyroCalibrationFlag) && callback)
         {
             callback (sample);
         }
@@ -120,6 +131,19 @@ RawData LSM6DSOX::readGyroscope ()
     gd.x = (tmp[1] << 8) | tmp[0];
     gd.y = (tmp[3] << 8) | tmp[2];
     gd.z = (tmp[5] << 8) | tmp[4];
+    if (gyroCalibrationFlag)
+    {
+        gyroOffset.x = (gd.x + nGyroCalibrationReadings * gyroOffset.x)
+                       / (nGyroCalibrationReadings + 1);
+        gyroOffset.y = (gd.y + nGyroCalibrationReadings * gyroOffset.y)
+                       / (nGyroCalibrationReadings + 1);
+        gyroOffset.z = (gd.z + nGyroCalibrationReadings * gyroOffset.z)
+                       / (nGyroCalibrationReadings + 1);
+        nGyroCalibrationReadings++;
+    }
+    gd.x -= gyroOffset.x;
+    gd.y -= gyroOffset.y;
+    gd.z -= gyroOffset.z;
     return gd;
 }
 

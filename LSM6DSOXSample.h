@@ -113,7 +113,15 @@ struct LSMSettings
         GYRO_2000_DPS = 2000
     };
 
+    /**
+     * Default full scale of the Gyro.
+     */
     GYRO_SCALE gyro_scale = GYRO_125_DPS;
+
+    /**
+     * If self calibration of the offset should be done at startup.
+     */
+    bool gyroCalibration = true;
 };
 
 #endif

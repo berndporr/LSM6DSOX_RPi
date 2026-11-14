@@ -4,7 +4,6 @@
 #include <gpiod.h>
 #include <linux/i2c-dev.h>
 #include <stdlib.h>
-#include <string>
 #include <sys/ioctl.h>
 #include <thread>
 #include <unistd.h>
@@ -77,6 +76,9 @@ class LSM6DSOX
     LSM6DSOXCallback callback;
     float xlRes; // accelerometer resolution
     float gRes;  // gyroscope resolution
+    RawData gyroOffset; // gyro offset
+    bool gyroCalibrationFlag = false; // true means it's calibrating
+    int nGyroCalibrationReadings = 0; // number of calibration readings
 
     struct gpiod_chip *chipDRDY = nullptr; // chip where the data ready pin is
     struct gpiod_line_settings *settings = nullptr;
