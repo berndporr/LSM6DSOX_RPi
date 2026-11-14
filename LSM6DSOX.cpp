@@ -6,15 +6,16 @@ void LSM6DSOX::start (LSMSettings s)
 {
     lsmsettings = s;
     //setup to detect rising edge on the data ready pin
-    chipDRDY = gpiod_chip_open (DRDY_CHIP); //open chip with the gpio pins
+    chipDRDY = gpiod_chip_open (
+        s.DRDY_CHIP.c_str ()); //open chip with the gpio pins
     settings = gpiod_line_settings_new ();
     gpiod_line_settings_set_direction (
         settings, GPIOD_LINE_DIRECTION_INPUT); //input line
     gpiod_line_settings_set_edge_detection (
         settings, GPIOD_LINE_EDGE_RISING); //detect rising edge
     line_cfg = gpiod_line_config_new ();
-    if (gpiod_line_config_add_line_settings (line_cfg, &LMS6DSOX_DRDY_GPIO, 1,
-                                             settings)
+    if (gpiod_line_config_add_line_settings (
+            line_cfg, &(lsmsettings.LMS6DSOX_DRDY_GPIO), 1, settings)
         < 0)
     { //offset is the gpio pin (22)
         throw "Add line settings failed";
@@ -115,7 +116,7 @@ RawData LSM6DSOX::readGyroscope ()
     RawData gd;
     uint8_t tmp[32]; //test if data is 8 bit
     contiguousReadBytes (LSM6DSOX_OUTX_L_G, tmp,
-                         6);       //read 6 bytes from outx_l_g
+                         6); //read 6 bytes from outx_l_g
     gd.x = (tmp[1] << 8) | tmp[0];
     gd.y = (tmp[3] << 8) | tmp[2];
     gd.z = (tmp[5] << 8) | tmp[4];
@@ -127,7 +128,7 @@ RawData LSM6DSOX::readAccelerometer ()
     RawData ad;
     uint8_t tmp[32]; //test if data is 8 bit
     contiguousReadBytes (LSM6DSOX_OUTX_L_XL, tmp,
-                         6);       //read 6 bytes from outx_l_g
+                         6); //read 6 bytes from outx_l_g
     ad.x = (tmp[1] << 8) | tmp[0];
     ad.y = (tmp[3] << 8) | tmp[2];
     ad.z = (tmp[5] << 8) | tmp[4];
@@ -155,14 +156,14 @@ void LSM6DSOX::contiguousReadBytes (uint8_t address, uint8_t *container,
 
 int LSM6DSOX::i2cOpen (int address)
 {
-    const int fd = open (device.c_str (), O_RDWR);
+    const int fd = open (lsmsettings.device.c_str (), O_RDWR);
     if (fd < 0)
     {
         throw "Can't open I2C device";
     }
     //I2C_SLAVE comes from linux kernel driver, no need to define
     //assign address as i2c peripheral (slave)
-    const int r = ioctl (fd, I2C_SLAVE, address);
+    const int r = ioctl (fd, I2C_SLAVE, lsmsettings.address);
     if (r < 0)
     {
         throw "Cannot assign I2C peripheral address";

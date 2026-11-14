@@ -1,5 +1,4 @@
 #include "LSM6DSOXSample.h"
-#include "LSM6DSOX_Registers.h"
 #include <fcntl.h>
 #include <functional>
 #include <gpiod.h>
@@ -12,18 +11,10 @@
 #ifndef LSM6DSOX_H
 #define LSM6DSOX_H
 
-const unsigned int LMS6DSOX_DRDY_GPIO
-    = 17; // RPi physical pin 15, connected to data ready pin on LSM
-const char DRDY_CHIP[] = "/dev/gpiochip0";
-
 class LSM6DSOX
 {
   public:
-    LSM6DSOX (const std::string &_device = "/dev/i2c-1",
-              uint8_t _address = LSM6DSOX_ADDRESS)
-        : device (_device), address (_address)
-    {
-    }
+    LSM6DSOX () = default;
 
     ~LSM6DSOX () {}
 
@@ -79,8 +70,6 @@ class LSM6DSOX
     }
 
   protected:
-    std::string device;  // device file
-    uint8_t address = 0; // chip address
     std::thread thread;
     LSMSettings lsmsettings{};
     friend class LSM6DSOXTest; // for unit testing

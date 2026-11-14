@@ -33,8 +33,14 @@ int main (int, char **)
         [&] (const LSM6DSOXSample &s) { callback.hasSample (s); });
     LSMSettings lsmsettings;
     lsmsettings.samplingRate = LSMSettings::ODR_12_5;
-    lsm6dS0x.start (lsmsettings);
-    fprintf(stderr,"Sampling rate: %f\n",lsm6dS0x.getODR());
+    try
+    {
+        lsm6dS0x.start (lsmsettings);
+    } catch (const char *msg) {
+        fprintf(stderr,"Error: %s\n",msg);
+        return -1;
+    }
+    fprintf (stderr, "Sampling rate: %f\n", lsm6dS0x.getODR ());
     fprintf (stderr, "Press Enter to stop\n");
     getchar ();
     lsm6dS0x.stop ();
