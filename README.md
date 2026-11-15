@@ -9,7 +9,7 @@ The photo shows it mounted underneath the Zetabot between its wheels:
 Raspberry Pi 5 with Debian Trixie OS, gpiod library version 2
 
 ```
-sudo apt-get install libgpiod cmake libgtest-dev libi2c-dev
+sudo apt-get install libgpiod libgtest-dev libi2c-dev
 ```
 
 ## Connect Pi 5 to LSM6DSOX
@@ -32,9 +32,9 @@ To install the library type:
 sudo make install
 ```
 
-## Test
+## Instrumented Test
 
-Run the unit tests with. It also reads read data from the chip so make sure it's
+It also reads read data from the chip so make sure it's
 connected and I2C is enabled:
 
 ```
