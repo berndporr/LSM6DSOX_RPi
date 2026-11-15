@@ -1,4 +1,5 @@
 #include "../LSM6DSOX.h"
+#include "LSM6DSOXSample.h"
 #include <gtest/gtest.h>
 const bool DEBUG = true;
 
@@ -180,3 +181,19 @@ INSTANTIATE_TEST_CASE_P (
                            LSMSettings::GYRO_1000_DPS, 0x02),
                        std::tuple<LSMSettings::GYRO_SCALE, uint8_t> (
                            LSMSettings::GYRO_2000_DPS, 0x03)));
+
+TEST (ReceivingDataTest, datatest)
+{
+    LSM6DSOXSample sample;
+    sample.valid = false;
+    LSM6DSOX lsm6dS0x;
+    lsm6dS0x.registerCallback ([&] (const LSM6DSOXSample &s) { sample = s; });
+    LSMSettings lsmsettings;
+    lsmsettings.samplingRate = LSMSettings::ODR_12_5;
+    lsmsettings.gyroCalibration = true;
+    EXPECT_NO_THROW ({ lsm6dS0x.start (lsmsettings); });
+    fprintf (stderr, "Successfull started.");
+    sleep (1);
+    EXPECT_TRUE (sample.valid);
+    lsm6dS0x.stop ();
+}

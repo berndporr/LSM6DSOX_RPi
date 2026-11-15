@@ -29,6 +29,10 @@ void LSM6DSOX::start (LSMSettings s)
         gpiod_line_request_release (request);
         throw "Could not request event";
     }
+    if (LSM6DSOX_WHO_AM_I_VALUE != i2cReadByte (LSM6DSOX_WHO_AM_I_REG))
+    {
+        throw "This is not an LSM6DSOX I'm talking to. Wrong WHO_AM_I.";
+    }
     //init Accelerometer and Gyroscope
     initAccelerometer ();
     initGyro ();
@@ -47,16 +51,20 @@ void LSM6DSOX::start (LSMSettings s)
         gyroCalibrationFlag = false;
         if (0 == nGyroCalibrationReadings)
         {
-            stop();
-            throw "Zero samples collected within one second even that the worker has been running.";
+            stop ();
+            throw "Zero samples collected within one second even that the "
+                  "worker has been running.";
         }
-        if (abs(gyroOffset.x * gRes) > maxGyroOffset) {
+        if (abs (gyroOffset.x * gRes) > maxGyroOffset)
+        {
             throw "Gyro x has too high offset.";
         }
-        if (abs(gyroOffset.y * gRes) > maxGyroOffset) {
+        if (abs (gyroOffset.y * gRes) > maxGyroOffset)
+        {
             throw "Gyro y has too high offset.";
         }
-        if (abs(gyroOffset.z * gRes) > maxGyroOffset) {
+        if (abs (gyroOffset.z * gRes) > maxGyroOffset)
+        {
             throw "Gyro z has too high offset.";
         }
     }
