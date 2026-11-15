@@ -55,18 +55,6 @@ void LSM6DSOX::start (LSMSettings s)
             throw "Zero samples collected within one second even that the "
                   "worker has been running.";
         }
-        if (abs (gyroOffset.x * gRes) > maxGyroOffset)
-        {
-            throw "Gyro x has too high offset.";
-        }
-        if (abs (gyroOffset.y * gRes) > maxGyroOffset)
-        {
-            throw "Gyro y has too high offset.";
-        }
-        if (abs (gyroOffset.z * gRes) > maxGyroOffset)
-        {
-            throw "Gyro z has too high offset.";
-        }
     }
 }
 
@@ -151,13 +139,19 @@ RawData LSM6DSOX::readGyroscope ()
     gd.z = (tmp[5] << 8) | tmp[4];
     if (gyroCalibrationFlag)
     {
-        gyroOffset.x = (gd.x + nGyroCalibrationReadings * gyroOffset.x)
-                       / (nGyroCalibrationReadings + 1);
-        gyroOffset.y = (gd.y + nGyroCalibrationReadings * gyroOffset.y)
-                       / (nGyroCalibrationReadings + 1);
-        gyroOffset.z = (gd.z + nGyroCalibrationReadings * gyroOffset.z)
-                       / (nGyroCalibrationReadings + 1);
-        nGyroCalibrationReadings++;
+        // At the start there might be spurious huge values. Let's ignore them.
+        if ((abs (gd.x * gRes) < maxGyroOffset)
+            && (abs (gd.y * gRes) < maxGyroOffset)
+            && (abs (gd.z * gRes) < maxGyroOffset))
+        {
+            gyroOffset.x = (gd.x + nGyroCalibrationReadings * gyroOffset.x)
+                           / (nGyroCalibrationReadings + 1);
+            gyroOffset.y = (gd.y + nGyroCalibrationReadings * gyroOffset.y)
+                           / (nGyroCalibrationReadings + 1);
+            gyroOffset.z = (gd.z + nGyroCalibrationReadings * gyroOffset.z)
+                           / (nGyroCalibrationReadings + 1);
+            nGyroCalibrationReadings++;
+        }
     }
     gd.x -= gyroOffset.x;
     gd.y -= gyroOffset.y;

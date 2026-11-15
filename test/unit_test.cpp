@@ -191,8 +191,15 @@ TEST (ReceivingDataTest, datatest)
     LSMSettings lsmsettings;
     lsmsettings.samplingRate = LSMSettings::ODR_12_5;
     lsmsettings.gyroCalibration = true;
-    EXPECT_NO_THROW ({ lsm6dS0x.start (lsmsettings); });
-    fprintf (stderr, "Successfull started.");
+    try
+    {
+        lsm6dS0x.start (lsmsettings);
+    }
+    catch (const char *msg)
+    {
+        ADD_FAILURE () << "Unexpected exception: " << msg;
+    }
+    fprintf (stderr, "Successfully started.");
     sleep (1);
     EXPECT_TRUE (sample.valid);
     lsm6dS0x.stop ();

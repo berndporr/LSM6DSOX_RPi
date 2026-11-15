@@ -29,9 +29,9 @@ class LSM6DSOX
 
     /**
      * @brief Max permitted gyro error. 
-     * 0.017 it's according to the datasheet (1 degrees) so using ~5 times higher.
+     * According to the datasheet it's 1 but not guaranteed so going for 3.
      */
-    constexpr static float maxGyroOffset = 0.087;
+    constexpr static float maxGyroOffset = 3;
 
     /**
      * @brief Starts the LSM6DSOX data acquisition.

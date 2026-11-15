@@ -32,6 +32,7 @@ int main (int, char **)
     lsm6dS0x.registerCallback (
         [&] (const LSM6DSOXSample &s) { callback.hasSample (s); });
     LSMSettings lsmsettings;
+    lsmsettings.gyroCalibration = true;
     lsmsettings.samplingRate = LSMSettings::ODR_12_5;
     try
     {
