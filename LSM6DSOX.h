@@ -158,14 +158,14 @@ class LSM6DSOX
     uint8_t flushData (uint8_t statusByte);
 
     /**
-     *@brief Gyroscope resolution (16 bit)
+     *@brief Gyroscope resolution
      */
-    float getGRes ();
+    inline float getGRes () const;
 
     /**
-     * @brief Accelerometer resolution (16 bit)
+     * @brief Accelerometer resolution
      */
-    float getXlRes ();
+    inline float getXlRes () const;
 
     /**
      * @brief Get bits to write to gyro register CTRL2_G to set scale. Shifts bits

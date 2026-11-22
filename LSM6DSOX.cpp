@@ -324,14 +324,38 @@ uint8_t LSM6DSOX::flushData (uint8_t statusByte)
 
 void LSM6DSOX::registerCallback (LSM6DSOXCallback cb) { callback = cb; }
 
-float LSM6DSOX::getGRes ()
+float LSM6DSOX::getGRes () const
 {
-    return (float)lsmsettings.gyro_scale / 32768.0; //16 bit float
+    switch (lsmsettings.gyro_scale)
+    {
+    case LSMSettings::GYRO_125_DPS:
+        return 4.375 / 1000;
+    case LSMSettings::GYRO_250_DPS:
+        return 8.75 / 1000;
+    case LSMSettings::GYRO_500_DPS:
+        return 17.50 / 1000;
+    case LSMSettings::GYRO_1000_DPS:
+        return 35.0 / 1000;
+    case LSMSettings::GYRO_2000_DPS:
+        return 70.0 / 1000;
+    }
+    return 0;
 }
 
-float LSM6DSOX::getXlRes ()
+float LSM6DSOX::getXlRes () const
 {
-    return (float)lsmsettings.xl_scale / 32768.0; //16 bit float
+    switch (lsmsettings.xl_scale)
+    {
+    case LSMSettings::XL_2G:
+        return 0.061 / 1000;
+    case LSMSettings::XL_4G:
+        return 0.122 / 1000;
+    case LSMSettings::XL_8G:
+        return 0.244 / 1000;
+    case LSMSettings::XL_16G:
+        return 0.488 / 1000;
+    }
+    return 0;
 }
 
 uint8_t LSM6DSOX::gyroScaleBits ()
