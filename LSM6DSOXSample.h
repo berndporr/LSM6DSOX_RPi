@@ -33,17 +33,17 @@ struct LSM6DSOXSample
     */
     float az = 0;
     /**
-    * @brief Rotation on x axis (deg/s)
+    * @brief Rotation on x axis (rad/s)
     */
     float gx = 0;
 
     /**
-    * @brief Rotation on y axis (deg/s)
+    * @brief Rotation on y axis (rad/s)
     */
     float gy = 0;
 
     /**
-    * @brief Rotation on z axis (deg/s)
+    * @brief Rotation on z axis (rad/s)
     */
     float gz = 0;
 
@@ -135,7 +135,7 @@ struct LSMSettings
     /**
      * @brief Default full scale of the Gyro.
      */
-    GYRO_SCALE gyro_scale = GYRO_125_DPS;
+    GYRO_SCALE gyro_scale = GYRO_250_DPS;
 
     /**
      * @brief If self calibration of the gyro.

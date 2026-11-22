@@ -326,18 +326,19 @@ void LSM6DSOX::registerCallback (LSM6DSOXCallback cb) { callback = cb; }
 
 float LSM6DSOX::getGRes () const
 {
+    constexpr float deg2rad = (M_PI / 180.0);
     switch (lsmsettings.gyro_scale)
     {
     case LSMSettings::GYRO_125_DPS:
-        return 4.375 / 1000;
+        return 4.375 / 1000.0 * deg2rad;
     case LSMSettings::GYRO_250_DPS:
-        return 8.75 / 1000;
+        return 8.75 / 1000.0 * deg2rad;
     case LSMSettings::GYRO_500_DPS:
-        return 17.50 / 1000;
+        return 17.50 / 1000.0 * deg2rad;
     case LSMSettings::GYRO_1000_DPS:
-        return 35.0 / 1000;
+        return 35.0 / 1000.0 * deg2rad;
     case LSMSettings::GYRO_2000_DPS:
-        return 70.0 / 1000;
+        return 70.0 / 1000.0 * deg2rad;
     }
     return 0;
 }
@@ -362,7 +363,7 @@ uint8_t LSM6DSOX::gyroScaleBits ()
 {
     if (lsmsettings.gyro_scale == LSMSettings::GYRO_125_DPS)
     {
-        return 0x01; //set FS_125 bit high, otherwise will use settings below
+        return 0x02; //set FS_125 bit high, otherwise will use settings below
     }
     uint8_t gyro_bits = 0x00;
     switch (lsmsettings.gyro_scale)
@@ -383,7 +384,7 @@ uint8_t LSM6DSOX::gyroScaleBits ()
         throw "Invalid scale settings";
         break;
     }
-    return (gyro_bits << 1); //shifted by one
+    return (gyro_bits << 2); //shifted by two
 }
 
 bool LSM6DSOX::isxlFSHigh ()
