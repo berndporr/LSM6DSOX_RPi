@@ -9,7 +9,7 @@ The photo shows it mounted underneath the Zetabot between its wheels:
 Raspberry Pi 5 with Debian Trixie OS, gpiod library version 2
 
 ```
-sudo apt-get install libgpiod libgtest-dev libi2c-dev
+sudo apt-get install libgpiod-dev libgtest-dev libi2c-dev
 ```
 
 ## Connect Pi 5 to LSM6DSOX
